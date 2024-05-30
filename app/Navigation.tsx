@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/Button";
+import Link from "@/components/Link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { default as NextLink } from "next/link";
 
@@ -17,7 +18,10 @@ const Navigation = () => {
         <div className="w-20 h-10 rounded bg-slate-600 animate-pulse" />
       )}
       {status === "authenticated" && (
-        <Button onClick={() => signOut()}>Sign Out</Button>
+        <div className="flex gap-2">
+          <Link href="/dashboard">Dashboard</Link>
+          <Button onClick={() => signOut()}>Sign Out</Button>
+        </div>
       )}
       {status === "unauthenticated" && (
         <Button onClick={() => signIn("github")}>Sign In Wtih Github</Button>
