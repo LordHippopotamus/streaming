@@ -1,0 +1,20 @@
+name: streaming
+
+services:
+  postgres:
+    image: "postgres:16.3-alpine"
+    environment:
+      - POSTGRES_PASSWORD=${PGPASSWORD}
+      - POSTGRES_DB=${PGDATABASE}
+
+  frontend:
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+
+  srs:
+    image: ossrs/srs:5
+    ports:
+      - 1935:1935
