@@ -18,3 +18,7 @@ services:
     image: ossrs/srs:5
     ports:
       - 1935:1935
+    volumes:
+      - ./srs.conf:/usr/local/srs/conf/docker.conf
+    depends_on:
+      - frontend
