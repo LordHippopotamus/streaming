@@ -16,6 +16,7 @@ model User {
   streamToken   String?
   accounts      Account[]
   sessions      Session[]
+  stream        Stream?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -58,4 +59,9 @@ model VerificationToken {
   expires    DateTime
  
   @@id([identifier, token])
+}
+
+model Stream {
+  userId     String   @id
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
