@@ -1,3 +1,4 @@
+import DisplayError from "@/components/DisplayError";
 import Link from "@/components/Link";
 import { PrismaClient } from "@prisma/client";
 
@@ -7,15 +8,11 @@ const Home = async () => {
   const prisma = new PrismaClient();
   const streams = await prisma.stream.findMany({ include: { user: true } });
 
+  if (!streams.length)
+    return <DisplayError message="No one is streaming now" />;
+
   return (
     <div className="mx-4 my-8">
-      {!streams.length && (
-        <div className="w-full h-full my-48">
-          <p className="text-center text-4xl tracking-widest">
-            No one is streaming now :(
-          </p>
-        </div>
-      )}
       <ul className="flex gap-2">
         {streams.map((el) => (
           <li key={el.user.id}>
