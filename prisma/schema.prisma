@@ -63,5 +63,6 @@ model VerificationToken {
 
 model Stream {
   userId     String   @id
+  viewers    Int      @default(0)
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

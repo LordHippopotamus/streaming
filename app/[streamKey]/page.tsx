@@ -1,6 +1,7 @@
 import DisplayError from "@/components/DisplayError";
-import VideoPlayer from "@/components/VIdeoPlayer";
 import { PrismaClient } from "@prisma/client";
+import ViewersCounter from "./ViewersCounter";
+import VideoPlayer from "./VIdeoPlayer";
 
 const Stream = async ({ params }: { params: { streamKey: string } }) => {
   const prisma = new PrismaClient();
@@ -16,6 +17,10 @@ const Stream = async ({ params }: { params: { streamKey: string } }) => {
   return (
     <div className="mx-4 my-8">
       <VideoPlayer streamKey={params.streamKey} />
+      <div className="mt-4 flex justify-between items-center">
+        <h4 className="font-bold text-4xl">{user.name || "Unnamed"}</h4>
+        <ViewersCounter streamKey={params.streamKey} />
+      </div>
     </div>
   );
 };
