@@ -39,7 +39,7 @@ const Dashboard = async () => {
         <li className="flex items-center">
           Server&nbsp;
           <span className="bg-slate-800 p-1 rounded tracking-widest select-all">
-            rtmp://{process.env.HOST}/live
+            {process.env.RTMP_HOST}/live
           </span>
         </li>
         <li className="flex items-center">
