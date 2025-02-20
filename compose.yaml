@@ -9,9 +9,9 @@ services:
     restart: always
 
   frontend:
-    build: .
+    build: /nextjs
     ports:
-      - 3002:3000
+      - 3000:3000
     depends_on:
       - postgres
     restart: always
@@ -20,10 +20,9 @@ services:
     image: ossrs/srs:5
     ports:
       - 1935:1935
-      - 8088:8088
+      - 8080:8080
     volumes:
       - ./srs.conf:/usr/local/srs/conf/docker.conf
-      - ./certificates:/usr/local/srs/conf
     depends_on:
       - frontend
     restart: always

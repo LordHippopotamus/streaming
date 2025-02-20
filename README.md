@@ -16,11 +16,11 @@ DATABASE_URL=postgres://postgres:strongpassword@postgres:5432/streaming
 PGPASSWORD=strongpassword
 PGDATABASE=streaming
 
-GITHUB_ID=Iv23liUDT9fLNBUnA53W
-GITHUB_SECRET=19c318fa4450e9e5143a4b1dd614993b651d27fd
+GITHUB_ID=
+GITHUB_SECRET=
 
-FLV_HOST=http://localhost:8080
-RTMP_HOST=rtmp://localhost:1935
+FLV_HOST=http://localhost:8080/live
+RTMP_HOST=rtmp://localhost:1935/live
 
 NEXTAUTH_SECRET=strongpassword
 ```

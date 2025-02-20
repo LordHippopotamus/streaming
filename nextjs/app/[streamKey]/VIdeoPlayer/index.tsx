@@ -5,7 +5,7 @@ const ClientVideoPlayer = dynamic(() => import("./VideoPlayer"), {
 });
 
 const VideoPlayer = ({ streamKey }: { streamKey: string }) => {
-  const streamUrl = `${process.env.FLV_HOST}/live/${streamKey}.flv`;
+  const streamUrl = `${process.env.FLV_HOST}/${streamKey}.flv`;
   return <ClientVideoPlayer streamUrl={streamUrl} />;
 };
 
