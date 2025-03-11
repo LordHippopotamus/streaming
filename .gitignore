@@ -4,3 +4,4 @@ nextjs/out/
 nextjs/build
 nextjs/.env*
 nextjs/next-env.d.ts
+.env
