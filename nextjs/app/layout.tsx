@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import NextAuthProvider from "./NextAuthProvider";
-import Navigation from "./Navigation";
 
 export const metadata: Metadata = {
   title: "Streaming",
@@ -16,10 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-slate-950 text-slate-50">
-        <NextAuthProvider>
-          <Navigation />
-          {children}
-        </NextAuthProvider>
+        <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>
   );
