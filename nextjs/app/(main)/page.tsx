@@ -1,11 +1,10 @@
 import DisplayError from "@/components/DisplayError";
 import Link from "@/components/Link";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/prisma";
 
 export const dynamic = "force-dynamic";
 
 const Home = async () => {
-  const prisma = new PrismaClient();
   const streams = await prisma.stream.findMany({ include: { user: true } });
 
   if (!streams.length)

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
     return new NextResponse("malformed request", { status: 400 });
   }
 
-  const prisma = new PrismaClient();
   const res = await prisma.user.findFirst({ where: { id: streamKey } });
 
   if (res?.streamToken !== streamToken) {

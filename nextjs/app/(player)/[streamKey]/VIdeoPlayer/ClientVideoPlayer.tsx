@@ -3,7 +3,7 @@
 import FlvJs from "flv.js";
 import { useEffect, useRef, useState } from "react";
 
-const VideoPlayer = ({
+const ClientVideoPlayer = ({
   streamUrl,
   children,
 }: {
@@ -235,4 +235,4 @@ const VideoPlayer = ({
   );
 };
 
-export default VideoPlayer;
+export default ClientVideoPlayer;

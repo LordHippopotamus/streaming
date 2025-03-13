@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useEffect, useState } from "react";
+import { getViewersByStreamKey } from "./actions";
 
 const ViewersCounter = ({ streamKey }: { streamKey: string }) => {
   const [viewers, setViewers] = useState(0);
@@ -8,10 +9,9 @@ const ViewersCounter = ({ streamKey }: { streamKey: string }) => {
 
   useEffect(() => {
     const interval = setInterval(async () => {
-      const res = await fetch(`/api/streams/${streamKey}/viewers`);
-      const viewers = await res.json();
+      const res = await getViewersByStreamKey(streamKey);
       setLoading(false);
-      setViewers(viewers);
+      setViewers(res);
     }, 3000);
     return () => clearInterval(interval);
   }, [streamKey]);

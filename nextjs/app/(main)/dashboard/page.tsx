@@ -1,17 +1,15 @@
-import { authOptions } from "@/lib/authOptions";
-import { PrismaClient } from "@prisma/client";
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import RegenerateTokenButton from "./RegenerateTokenButton";
+import { prisma } from "@/prisma";
+import { auth } from "@/auth";
 
 const getUser = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
   if (!session?.user) return redirect("/");
   return session.user;
 };
 
 const getStreamToken = async (userId: string) => {
-  const prisma = new PrismaClient();
   const res = await prisma.user.findFirstOrThrow({ where: { id: userId } });
   return res.streamToken;
 };

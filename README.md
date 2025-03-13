@@ -9,20 +9,24 @@
   - Callback URL: `http://localhost:3000/api/auth/callback/github`
 - [obs](https://obsproject.com)
 
-### Create `.env`
+### Create `.env` in the root of project
 
 ```
+AUTH_SECRET=
+AUTH_TRUST_HOST=
+AUTH_URL=
+
+AUTH_GITHUB_ID=
+AUTH_GITHUB_SECRET=
+
 DATABASE_URL=postgres://postgres:strongpassword@postgres:5432/streaming
 PGPASSWORD=strongpassword
 PGDATABASE=streaming
 
-GITHUB_ID=
-GITHUB_SECRET=
-
 FLV_HOST=http://localhost:8080/live
 RTMP_HOST=rtmp://localhost:1935/live
 
-NEXTAUTH_SECRET=strongpassword
+SOCKET_IO_URL=localhost:4000
 ```
 
 ### Run it

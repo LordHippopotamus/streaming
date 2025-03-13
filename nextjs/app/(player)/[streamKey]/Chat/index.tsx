@@ -17,7 +17,7 @@ const Chat = ({
   socketIoUrl: string;
 }) => {
   const socket = io(socketIoUrl, {
-    extraHeaders: { room, user: user ? user.id : "" },
+    extraHeaders: { room, user: user?.id ? user.id : "" },
   });
   const [messages, setMessages] = useState<Message[]>([]);
   const [value, setValue] = useState("");
@@ -66,12 +66,12 @@ const Chat = ({
           className="bg-slate-800 p-4 flex items-center gap-1"
         >
           <input
-            className="w-full text-slate-900 rounded p-1 focus:outline outline-slate-700"
+            className="w-full rounded p-1 border border-slate-500 focus:outline-2 outline-slate-300"
             placeholder="message..."
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
           />
-          <button className="w-8 h-8 p-1 rounded transition bg-slate-500 hover:bg-slate-600 active:bg-slate-700">
+          <button className="w-8 h-8 p-1 rounded transition bg-slate-500 hover:bg-slate-600 active:bg-slate-700 cursor-pointer">
             <svg
               data-slot="icon"
               aria-hidden="true"

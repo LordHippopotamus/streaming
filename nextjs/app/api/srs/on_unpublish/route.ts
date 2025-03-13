@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -9,8 +9,6 @@ export async function POST(request: NextRequest) {
   if (!streamKey || typeof streamKey !== "string") {
     return new NextResponse("malformed request", { status: 400 });
   }
-
-  const prisma = new PrismaClient();
 
   await prisma.stream.delete({ where: { userId: streamKey } });
 

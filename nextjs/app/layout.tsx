@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import NextAuthProvider from "./NextAuthProvider";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Streaming",
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-slate-950 text-slate-50">
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );
