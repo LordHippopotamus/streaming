@@ -4,6 +4,7 @@ import { User } from "next-auth";
 import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import { getUserNameById } from "./actions";
+import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 
 type Message = { message: string; user: string; id: string };
 
@@ -71,22 +72,8 @@ const Chat = ({
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
           />
-          <button className="w-8 h-8 p-1 rounded transition bg-slate-500 hover:bg-slate-600 active:bg-slate-700 cursor-pointer">
-            <svg
-              data-slot="icon"
-              aria-hidden="true"
-              fill="none"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></path>
-            </svg>
+          <button className=" p-1 rounded transition bg-slate-500 hover:bg-slate-600 active:bg-slate-700 cursor-pointer">
+            <PaperAirplaneIcon className="h-6 w-6" />
           </button>
         </form>
       )}

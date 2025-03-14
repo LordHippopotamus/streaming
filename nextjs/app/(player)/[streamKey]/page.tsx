@@ -24,15 +24,15 @@ const Stream = async ({
     include: { stream: true },
   });
 
-  if (!streamer) return <DisplayError message="The user doesn't exist" />;
-  if (!streamer.stream)
-    return <DisplayError message="The user is offline now" />;
+  // if (!streamer) return <DisplayError message="The user doesn't exist" />;
+  // if (!streamer.stream)
+  //   return <DisplayError message="The user is offline now" />;
 
   return (
     <div className="flex-1 flex overflow-hidden">
       <VideoPlayer
         streamKey={streamKey}
-        streamer={streamer.name}
+        streamer={"streamer.name"}
         flvHost={flvHost}
       />
       <Chat room={streamKey} user={session?.user} socketIoUrl={socketIoUrl} />
