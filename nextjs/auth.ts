@@ -2,6 +2,7 @@ import NextAuth, { DefaultSession } from "next-auth";
 import GitHub from "next-auth/providers/github";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/prisma";
+import { regenerateToken } from "@/app/(main)/dashboard/actions"
 
 declare module "next-auth" {
   interface Session {
@@ -20,4 +21,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
+  events: {
+    async createUser({ user }) {
+      await regenerateToken(user.id as string)
+  },
+},
 });

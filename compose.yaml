@@ -9,29 +9,40 @@ services:
     restart: always
 
   frontend:
-    build: /nextjs
-    ports:
-      - 3000:3000
+    build: ./nextjs
     depends_on:
       - postgres
     env_file: .env
     restart: always
 
   socketio:
-    build: /socketio
-    ports:
-      - 4000:4000
+    build: ./socketio
     depends_on:
       - frontend
+    ports:
+      - 4000:4000
     restart: always
 
   srs:
     image: ossrs/srs:5
     ports:
-      - 1935:1935
       - 8080:8080
+      - 1935:1935
     volumes:
       - ./srs.conf:/usr/local/srs/conf/docker.conf
     depends_on:
       - frontend
+    restart: always
+
+  caddy:
+    image: caddy:latest
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - frontend
+      - socketio
+      - srs
     restart: always

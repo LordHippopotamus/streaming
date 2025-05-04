@@ -1,0 +1,6 @@
+streaming.selihov-daniil.ru {
+    reverse_proxy /socket.io/* socketio:4000
+    reverse_proxy /rtmp/* srs:1935
+    reverse_proxy /live/* srs:8080
+    reverse_proxy frontend:3000
+}
